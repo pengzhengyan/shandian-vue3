@@ -1,30 +1,26 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import Layout from '@/layout/LayoutIndex.vue'
+import { onBeforeMount, onMounted } from 'vue'
+// import { useRouter } from 'vue-router'
+
+// const router = useRouter()
+
+onBeforeMount(() => {
+  // 如果没有用户登录信息，则跳到登录页面
+  // let hasLogged = localStorage.getItem(lOGIN_INFO)
+  // if (!hasLogged) router.push({ name: 'Login' })
+})
+
+onMounted(() => {
+  document.body.style.setProperty('--el-color-primary', '#6b7aff');
+  document.body.style.setProperty('--el-color-primary-light-9', '#6b7affd9');
+  document.body.style.setProperty('--el-color-primary-light-3', '#6b7affd9');
+  document.body.style.setProperty('--el-dialog-padding-primary', '0');
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Layout />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>

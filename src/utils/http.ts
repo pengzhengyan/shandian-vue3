@@ -15,7 +15,7 @@ import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 // import router from '@/router'
 import { ElMessage } from 'element-plus'
 // 处理loading
-import { showFullScreenLoading, tryHideFullScreenLoading } from 'utils/loadingHandler'
+import { showFullScreenLoading, tryHideFullScreenLoading } from '@/utils/loadingHandler'
 
 const baseURL = 'http://129.204.228.108'
 
@@ -54,16 +54,16 @@ service.interceptors.request.use(function (config) {
 /* 响应拦截器 */
 service.interceptors.response.use((response: AxiosResponse) => {
   tryHideFullScreenLoading()
-  const { code, msg, data } = response.data
+  const { code, msg } = response.data
 
   // 根据自定义错误码判断请求是否成功
   if (code === '0') {
     // 将组件用的数据返回
-    return data
+    return response.data
   } else {
     // 处理业务错误。
     ElMessage.error(msg)
-    return Promise.reject(new Error(msg))
+    // return Promise.reject(new Error(msg))
   }
 }, (error: AxiosError) => {
   tryHideFullScreenLoading()
@@ -92,6 +92,7 @@ service.interceptors.response.use((response: AxiosResponse) => {
   ElMessage.error(msg)
   return Promise.reject(error)
 })
+
 
 /* 导出封装的请求方法 */
 const http = {

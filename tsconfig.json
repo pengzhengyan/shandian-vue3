@@ -27,7 +27,13 @@
 
     "paths": {
       "@": ["./src"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "comps": ["./src/components"],
+      "services": ["./src/services"],
+      "pages": ["./src/pages"],
+      "utils": ["./src/utils"],
+      "types": ["./src/types"],
+      "routes": ["./src/routes"]
     }
   },
   "include": [
